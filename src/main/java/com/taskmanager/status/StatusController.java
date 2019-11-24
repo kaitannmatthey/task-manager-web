@@ -13,9 +13,9 @@ public class StatusController {
 	@Autowired
 	private StatusRepository statusRepo;
 	
-	// List All Difficulties
+	// List All Statuses
 	@GetMapping("/")
-	public JsonResponse ListDifficulties() {
+	public JsonResponse listStatuses() {
 		JsonResponse jr = null;
 		try {
 			jr = JsonResponse.getInstance(statusRepo.findAll());

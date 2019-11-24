@@ -15,7 +15,7 @@ public class DifficultyController {
 	
 	// List All Difficulties
 	@GetMapping("/")
-	public JsonResponse ListDifficulties() {
+	public JsonResponse listDifficulties() {
 		JsonResponse jr = null;
 		try {
 			jr = JsonResponse.getInstance(difficultyRepo.findAll());

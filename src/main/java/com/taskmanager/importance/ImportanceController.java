@@ -13,9 +13,9 @@ public class ImportanceController {
 	@Autowired
 	private ImportanceRepository importanceRepo;
 	
-	// List All Difficulties
+	// List All Importances
 	@GetMapping("/")
-	public JsonResponse ListDifficulties() {
+	public JsonResponse listImportances() {
 		JsonResponse jr = null;
 		try {
 			jr = JsonResponse.getInstance(importanceRepo.findAll());
