@@ -1,6 +1,6 @@
 package com.taskmanager.status;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import com.taskmanager.JsonResponse;
@@ -10,8 +10,12 @@ import com.taskmanager.JsonResponse;
 @RequestMapping("/statuses")
 public class StatusController {
 	
-	@Autowired
-	private StatusRepository statusRepo;
+	private final StatusRepository statusRepo;
+	
+	public StatusController(StatusRepository statusRepo) {
+		Assert.notNull(statusRepo, "StatusRepository must not be null");
+		this.statusRepo = statusRepo;
+	}
 	
 	// List All Statuses
 	@GetMapping("/")

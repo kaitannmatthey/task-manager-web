@@ -1,6 +1,6 @@
 package com.taskmanager.difficulty;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import com.taskmanager.JsonResponse;
@@ -10,8 +10,12 @@ import com.taskmanager.JsonResponse;
 @RequestMapping("/difficulties")
 public class DifficultyController {
 	
-	@Autowired
-	private DifficultyRepository difficultyRepo;
+	private final DifficultyRepository difficultyRepo;
+	
+	public DifficultyController(DifficultyRepository difficultyRepo) {
+		Assert.notNull(difficultyRepo, "DifficultyRepository must not be null");
+		this.difficultyRepo = difficultyRepo;
+	}
 	
 	// List All Difficulties
 	@GetMapping("/")
